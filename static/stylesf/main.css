@@ -1,8 +1,38 @@
+/* GLOBAL STYLES */
 body {
-  background-color: rgba(178, 105, 45, 0.694);
+  background: #fefefe;
 }
-h1 {
+
+/* DEMO-SPECIFIC STYLES */
+.typewriter h1 {
+  color: #000000;
   font-family: "Roboto";
-  color: aliceblue;
-  font-size: 50px;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid rgb(223, 100, 0); /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    /* border-color: transparent; */
+    border-color: white;
+  }
+  50% {
+    border-color: rgb(255, 153, 0);
+  }
 }

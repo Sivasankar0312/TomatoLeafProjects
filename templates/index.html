@@ -26,13 +26,115 @@
       href="{{ url_for('static', filename='stylesf/main.css') }}"
     />
   </head>
+
   <body>
-    <div style="display: flex; align-items: center">
-      <img
-        src="{{ url_for('static',filename='images/front.jpg')}}"
-        style="margin: 50px; padding: 50px; width: 30%; height: 60vh"
-      />
-      <h1>Welcome to the Tomato Leaf Disease Detection System</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{url_for('upload')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('upload')}}">Upload Image</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="" data-toggle="modal" data-target="#myModal">Instructions</a>
+            </li>
+            
+              
+          
+        </div>
+      </div>
+    </nav>
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+    
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">விதிகள்</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+    
+          <!-- Modal body -->
+          <div class="modal-body">
+            
+              <ol>
+                <li>நிகர தரையில் விதை அல்லது பருத்திகளில் வளர்கின்றது:</li>
+                <ul style="list-style-type: square;">
+                  <li>தக்காளி வளர்ப்புக்கு சிறிய கட்டிகளில் பருத்திகளை அல்லது விதைகளை பருத்தி விளங்குவது முக்கியம். நிகர தரை காரிகை அல்லது நிகர மணத்தில் பருத்திகளை விதைகளாக அல்லது குழிப்புகளாக விதைத்துக் கொள்ளலாம்.</li>
+                </ul>
+                <li>தரையின் உயரம் மற்றும் பருத்திகள்:</li>
+                <ul style="list-style-type: square;">
+                  <li>தக்காளி பருத்திகளுக்கு அழுக்கான முக்கியமான உயரம் உள்ள தரை தேவை. நிரந்தரமாக 1.5 மீட்டர் உயரம் கொண்ட தரைகள் தக்காளி வளர்ச்சிக்கு அதிக உயரம் அளிக்கும்.
+                  </li>
+                </ul>
+                <li>
+                  உள்ளிட்ட நீர் அளவு:
+                </li>
+                <ul style="list-style-type: square;">
+                  <li>தக்காளி உள்ளிட்ட நீரின் அளவை காரிகைகள் அல்லது தரை வளர்ப்பில் பயன்படுத்துக. குழிப்புகளை நிச்சயமாகப் போக்கில், தக்காளியின் தராசுத்தி உயரமாக உள்ளிடப்படும்.
+                  </li>
+                </ul>
+                <li> மணத்தில் பரப்புதல்</li>
+                <ul style="list-style-type: square;">
+                  <li> தரையில் பரப்புதல் தக்காளி பருத்திகளின் வளர்ச்சியை அதிகரிக்கும். மணத்தை உருவாக்கி, வளர்ச்சிக்கு அநேகருக்கு பின்னர் பாதுகாப்பான பரப்புதலை இல்லாமல் இருக்கக் கூடும்.</li>
+                </ul>
+                <li>வாழ்நிலை பரிசோதனை:</li>
+                 <ul style="list-style-type: square;">
+                  <li> தரையின் வாழ்நிலை பரிசோதனை அவசியம். தரையில் உள்ள மிகுந்த மணத்தில் பெரிதும் சரியான வாழ்நிலைக்கு அநேகருக்கும் பொறுத்தமான மாதிரி பரிசோதனை உண்டாக வேண்டும்.</li>
+                 </ul> 
+              <li>காலந்த உழைப்பு:</li>
+              <ul style="list-style-type: square;" >
+                <li>தக்காளி பருத்திகளை உழைத்துக் கொள்ளும்போது, அநேகருக்கும் முன்னர் அவற்றை சாய்கிறான</li>
+              </ul>
+              </ol>
+          </div>
+    
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+    
+        </div>
+      </div>
     </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+        <img src="{{ url_for('static', filename='images/front.jpg') }}" style="margin-top: 50px;width: 100%;"/>
+        </div>
+        <div class="typewriter" >
+          <h1 style="align-items: center;margin-top:150px;margin-left: 50px;">Tomato Leaf Detection System</h1>
+          <a href="{{url_for('upload')}}"><button class="btn btn-primary" style="width: 100px;font-size: 25px;margin-top:50px;margin-left:250px;" on>Upload</button></a>
+        </div>
+        
+      </div>
+    </div>
+    <!-- <div class="card text-center" style="margin-top: 50px;">
+      <div class="card-header bg-dark text-white">
+      Contact us
+      </div>
+      <div class="card-body">
+      
+        
+        
+      </div>
+      <div class="card-footer text-body-secondary ">
+  
+      </div>
+    </div> -->
   </body>
 </html>

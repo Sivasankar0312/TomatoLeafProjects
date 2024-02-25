@@ -1,5 +1,6 @@
 from flask import Flask, redirect, url_for, request, render_template
-
+from werkzeug.utils import secure_filename
+from werkzeug.datastructures import  FileStorage
 from flask_bootstrap import Bootstrap
 app = Flask(__name__)
 Bootstrap(app)
@@ -8,7 +9,7 @@ from demo import translatetext
 @app.route('/success')
 def success():
    text=translatetext()
-   print(text)
+
    return 'Hello %s as Guest' % text
 
 # @app.route('/login',methods = ['POST', 'GET'])
@@ -24,6 +25,20 @@ def success():
 @app.route("/student")
 def student():
    return render_template('student.html')
+
+
+@app.route('/upload')
+def upload():
+   return render_template('upload.html')
+
+
+@app.route("/uploader",methods=['GET','POST'])
+def uploader():
+      if request.method == 'POST':
+         f = request.files['file']
+         
+         return 'file uploaded successfully'
+
 
 @app.route("/result",methods=['POST','GET'])
 def result():
