@@ -2,9 +2,10 @@ from flask import Flask, redirect, url_for, request, render_template
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 from flask_bootstrap import Bootstrap
+import os
 app = Flask(__name__)
 Bootstrap(app)
-
+img = os.path.join('static')
 from demo import translatetext
 @app.route('/success')
 def success():
@@ -29,15 +30,18 @@ def student():
 
 @app.route('/upload')
 def upload():
-   return render_template('upload.html')
+   return render_template('upload.html',show_hidden=False)
 
 
 @app.route("/uploader",methods=['GET','POST'])
 def uploader():
       if request.method == 'POST':
-         f = request.files['file']
-         
-         return 'file uploaded successfully'
+         file = request.files['file']
+         filename = secure_filename(file.filename)
+
+         file.save('static/'+filename)
+         filepath = os.path.join(img, filename)
+         return render_template('upload.html', show_hidden=True,f=filepath)
 
 
 @app.route("/result",methods=['POST','GET'])
